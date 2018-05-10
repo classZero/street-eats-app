@@ -14,7 +14,7 @@ export default class App extends React.Component {
 
       <Scene hideNavBar={true} key="splash" component={splash}  initial />
       
-      <Scene hideNavBar={true} key="home" component={home} title="Home" type="reset"/>
+      <Scene hideNavBar={true} key="home" component={home} title="Home" type="reset"  />
 
       <Scene hideNavBar={true} key="Map" component={Map} title="Map"  />
      
