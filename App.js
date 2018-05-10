@@ -1,62 +1,28 @@
-import MapView, {Marker} from 'react-native-maps';
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableHighlight,
-} from 'react-native';
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-});
+import React from 'react';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { Router, Scene } from 'react-native-router-flux';
 
+import map from './components/map'
+import home from './components/home'
+import splash from './components/splash'
 
-class Home extends Component {
-  constructor() {
-    super()
-  }
-
+export default class App extends React.Component {
   render() {
-    return (
-      <MapView
-        style={ styles.map }
-        initialRegion={{
-          latitude: 36.1699412,
-          longitude: -115.1398295,
-          latitudeDelta: 0.5,
-          longitudeDelta: 0.0421,
-        }}
-      >
-      <Marker
-      coordinate={{latitude: 36.1699412,
-        longitude: -115.1398295}}
-      />
-      <Marker
-      coordinate={{latitude: 35.1699412,
-        longitude: -115.1398295}}
-      />
-      </MapView>
-
-    );
+    return <Router>
+      <Scene key="root" hideNavBar={true}>
+      <Scene key="splash" component={splash}  initial />
+      <Scene key="home" component={home} title="Home"  />
+      <Scene key="map" component={map} title="Map"  />
+      </Scene>
+    </Router>
   }
 }
-export default Home;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
