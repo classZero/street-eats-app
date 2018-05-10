@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 })
 
 
-class Home extends Component {
+class TruckList extends Component {
     state = {
         data: [],
     }
@@ -51,7 +51,7 @@ class Home extends Component {
                 <View>
                    <FlatList
                    data={this.state.data}
-                   keyExtractor={(x, i) => "truck" + i}
+                   keyExtractor={(x, i) => i}
                    renderItem={({ item}) => 
                     <Text>{item.companyname}</Text>}
                     />
@@ -62,4 +62,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default TruckList;

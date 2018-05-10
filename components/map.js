@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
       bottom: 0,
     },
   });
-class map extends Component {
+class Map extends Component {
 
     render() {
         return (
@@ -53,4 +53,4 @@ class map extends Component {
     }
 }
 
-export default map;
+export default Map;
