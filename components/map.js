@@ -41,10 +41,11 @@ class Map extends Component {
   state = {
     region: {
       latitude: 36.1699412,
-          longitude: -115.1398295,
-          latitudeDelta: 0.5,
-          longitudeDelta: 0.0421
-    }
+      longitude: -115.1398295,
+      latitudeDelta: 0.5,
+      longitudeDelta: 0.0421
+    },
+    data: []
   }
   
 componentDidMount() {
@@ -62,16 +63,27 @@ componentDidMount() {
     (error) => alert(JSON.stringify(error)),
     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
   );
+  return fetch('http://10.68.0.164:3001/api/truckdata/active', {
+      method: 'GET'
+    }).then((response) => response.json())
+        .then((resp) => {
+          this.setState({
+            data: resp.results
+        })
+          console.log(resp.results)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
 }
-// <MapView
-// style={ styles.map }
-// initialRegion={{
-//   latitude: 36.1699412,
-//   longitude: -115.1398295,
-//   latitudeDelta: 0.5,
-//   longitudeDelta: 0.0421,
-// }}
-// >
+
+// setPins = (function() {
+//   return (
+//     console.log(this.state.data)
+//   )
+// })
+// <Image source={require('../assets/truck_pin.png')}
+//           style={{width: 50, height: 50}} />
 
   render() {
     return (
@@ -81,19 +93,19 @@ componentDidMount() {
            region={this.state.region}
            onRegionChange={this.onRegionChange}
       >
-      <View>
-      <StatusBar hidden={true} />        
-      <Marker
-      coordinate={{latitude: 36.1699412,
-        longitude: -115.1398295}}
-        title={'Sushi 4 You'}
-        description={'12278 Kings Eagle Street Las Vegas, NV 89141'}
-        onPress={e => console.log(e.nativeEvent)}
-      >
-      <Image source={require('../assets/truck_pin.png')}
-        style={{width: 50, height: 50}} />
-      </Marker>
-      </View>
+      <StatusBar hidden={true} />      
+      {this.state.data.map((truck, i) => {
+        console.log(truck)  
+        return ( <Marker key={"truck" + i}
+        coordinate={{latitude: truck.lat , longitude: truck.lng}}
+        title={truck.companyname}
+        description={truck.aboutus}
+        >
+        <Image source={require('../assets/truck_pin.png')}
+           style={{width: 50, height: 50}} />
+        </Marker>
+        )
+      })}
       </MapView>
     );
   }

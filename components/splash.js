@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 40,
         fontWeight: 'bold',
+    },
+    createdBy: {
+        textAlign: 'center',
+        fontSize: 15,
+        marginTop: 50
     }
 })
 
@@ -24,6 +29,7 @@ class Modal extends Component {
             <View style={styles.container}>
             <StatusBar hidden={true} />
                 <Text style={styles.text}>Welcome To Street Eats</Text>
+                <Text style={styles.createdBy}>Created by: Leo Lugo, Kevin McGahey, Kevin Jossendal, and Chris Steinle</Text>
             </View>
             
         );
