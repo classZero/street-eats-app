@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     }
 })
 
-// StatusBar.setBarStyle('light-content', true)
 
 class Home extends Component {
     state = {
@@ -77,7 +76,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.68.0.164:3001/api/truckdata/new', {
+        return fetch('http://10.68.0.164:3001/api/truckdata/active', {
             method: 'GET'
           }).then((response) => response.json())
               .then((resp) => {
@@ -90,6 +89,7 @@ class Home extends Component {
                 console.error(error);
               });
     }
+    
 
 
     render() {
@@ -97,7 +97,7 @@ class Home extends Component {
             <View style={styles.container}>
             <StatusBar hidden={true} />
                 <View style={styles.header}>
-                    <Text onPress={() => Actions.Map()} style={styles.homeTruckList}>Truck List</Text>
+                    <Text onPress={() => Actions.TruckList()} style={styles.homeTruckList}>Truck List</Text>
                     <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
                     <Text style={styles.hometext} >Street Eats</Text>
                     <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
@@ -107,8 +107,12 @@ class Home extends Component {
                    <Map />
             </View>
             <View style={styles.trucklist}>
-                <Text>This where da truck list would go ya dig</Text>
-                <Text>Da addie goes here</Text>
+                <FlatList
+                   data={this.state.data}
+                   keyExtractor={(x, i) => 'truck' + i}
+                   renderItem={({ item}) => 
+                    <Text>{item.companyname}</Text>}
+                    />
             </View>
             </View>
             

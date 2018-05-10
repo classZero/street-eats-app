@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -29,7 +29,7 @@ class TruckList extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.68.0.164:3001/api/truckdata/new', {
+        return fetch('http://10.68.0.164:3001/api/truckdata/all', {
             method: 'GET'
           }).then((response) => response.json())
               .then((resp) => {
@@ -47,13 +47,17 @@ class TruckList extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text onPress={() => Actions.map()} style={styles.hometext} >Street Eats</Text>
+                <Text onPress={() => Actions.pop()} style={styles.hometext} >Street Eats</Text>
                 <View>
                    <FlatList
                    data={this.state.data}
-                   keyExtractor={(x, i) => i}
+                   keyExtractor={(x, i) => 'truck' + i}
                    renderItem={({ item}) => 
-                    <Text>{item.companyname}</Text>}
+                   <View>
+                    <Text>{item.companyname}</Text>
+                    <Image source={require('../assets/truck_pin.png')}
+                    style={{width: 50, height: 50}} />
+                    </View>}
                     />
                 </View>
             </View>

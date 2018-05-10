@@ -5,6 +5,7 @@ import Swiper from 'react-native-swiper'
 import Map from './components/map'
 import home from './components/home'
 import splash from './components/splash'
+import TruckList from './components/truckList'
 
 export default class App extends React.Component {
   render() {
@@ -17,6 +18,8 @@ export default class App extends React.Component {
 
       <Scene hideNavBar={true} key="Map" component={Map} title="Map"  />
      
+      <Scene hideNavBar={true} key="TruckList" component={TruckList} title="Truck List" />
+
       </Scene>
     </Router>
   }
