@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     }
 })
 
-class modal extends Component {
+class Modal extends Component {
 
     render() {
         setTimeout(() => Actions.home(), 2000)
@@ -30,4 +30,4 @@ class modal extends Component {
     }
 }
 
-export default modal;
+export default Modal;

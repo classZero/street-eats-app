@@ -71,29 +71,28 @@ const styles = StyleSheet.create({
 
 // StatusBar.setBarStyle('light-content', true)
 
-class home extends Component {
+class Home extends Component {
     state = {
         data: [],
     }
 
-    componentWillMount() {
-        this.fetchData()
+    componentDidMount() {
+        return fetch('http://10.68.0.164:3001/api/truckdata/new', {
+            method: 'GET'
+          }).then((response) => response.json())
+              .then((resp) => {
+                 this.setState({
+                     data: resp.results
+                 })
+                 console.log(this.state.data)
+              })
+              .catch((error) => {
+                console.error(error);
+              });
     }
 
-    fetchData = async () => {
-        const response = await fetch('https://randomuser.me/api?results=10')
-        const json = await response.json()
-        this.setState({data: json.results})
-    }
-
-    displayUsers() {
-        return this.state.data.map((user, i) => {
-        return  (<View key={i}><Text>{user.name.first}</Text></View>)
-        })
-    }
 
     render() {
-        console.log(this.state.data[0])
         return (
             <View style={styles.container}>
             <StatusBar hidden={true} />
@@ -117,4 +116,4 @@ class home extends Component {
     }
 }
 
-export default home;
+export default Home;
