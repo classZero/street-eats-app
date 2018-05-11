@@ -124,6 +124,13 @@ class TruckUpdate extends Component {
         })
     }
 
+    removeToken = () => {
+        AsyncStorage.removeItem('token').then(token => {
+          console.log(token)
+        })
+        Actions.home()
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -141,6 +148,10 @@ class TruckUpdate extends Component {
                     title="Checkout of My Current Location"
                     onPress={this.checkout}
                     />
+                    <Button
+                title="Logout"
+                onPress={this.removeToken}
+                />
                 </View>
             </View>
             
