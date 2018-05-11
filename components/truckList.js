@@ -45,6 +45,7 @@ class TruckList extends Component {
 
 
     render() {
+        console.log(this.state.data.username)
         return (
             <View style={styles.container}>
                 <Text onPress={() => Actions.pop()} style={styles.hometext} >Street Eats</Text>
@@ -54,9 +55,9 @@ class TruckList extends Component {
                    keyExtractor={(x, i) => 'truck' + i}
                    renderItem={({ item}) => 
                    <View>
-                    <Text>{item.companyname}</Text>
-                    <Image source={require('../assets/truck_pin.png')}
-                    style={{width: 50, height: 50}} />
+                    <Text onPress={() => Actions.TruckProfile({username: item.username})} >{item.companyname}</Text>
+                    <Image source={{uri: `${item.companylogo}`}}
+                style={{width: 50, height: 50}} />
                     </View>}
                     />
                 </View>

@@ -134,7 +134,7 @@ class Home extends Component {
                    data={this.state.data}
                    keyExtractor={(x, i) => 'truck' + i}
                    renderItem={({ item}) => 
-                    <Text style={styles.trucklisty}>{item.companyname}</Text>}
+                    <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>}
                     />
             </View>
             </View>
