@@ -10,6 +10,7 @@ import {
     TouchableHighlight,
     StatusBar,
     ImageBackground,
+    AsyncStorage,
     } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
@@ -121,6 +122,7 @@ class Home extends Component {
             .catch((error) => {
                 console.error(error);
             });
+            
     }
     
 

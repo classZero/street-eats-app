@@ -12,6 +12,8 @@ import {
     AsyncStorage,
     } from 'react-native';
 
+import TruckUpdate from './truckUpdate'
+
 
 class Login extends Component {
     state = {
@@ -33,29 +35,29 @@ class Login extends Component {
             }),
         }).then((response) => response.json())
         .then((resp) => {
-            console.log(resp.token)
-            AsyncStorage.setItem('token', resp.token)
-            AsyncStorage.setItem('username', resp.user)
+            if(resp.message === 'Login Successful') {
+                AsyncStorage.setItem('token', resp.token)
+                AsyncStorage.setItem('username', resp.user)
+                AsyncStorage.setItem('isAuth', 'true')
+                Actions.TruckUpdate()
+            } else {
+                alert("Bad username and/or password")
+            }
         })
         .catch((error) => {console.error(error);
         });
 
         this.setState({
             name: '',
-            password: ''
+            password: '',
         })
         Keyboard.dismiss()
-    }
-
-    removeToken = () => {
-        AsyncStorage.removeItem('token').then(token => {
-            console.log("Token removed")
-        })
     }
 
     render() {
         return (
             <View>
+                <View>
                 <StatusBar hidden={true} />
                 <Text>Login</Text>
                 <Text>Username:</Text>
@@ -74,14 +76,7 @@ class Login extends Component {
                 title="Submit"
                 onPress={this.handleSubmit}
                 />
-                <Button
-                title="Logout"
-                onPress={this.removeToken}
-                />
-                <Button
-                title="Update page"
-                onPress={() => Actions.TruckUpdate()}
-                />
+                </View>
             </View>
         );
     }
