@@ -7,6 +7,7 @@ import home from './components/home'
 import splash from './components/splash'
 import TruckList from './components/truckList'
 import TruckProfile from './components/truckProfile'
+import MapFullView from './components/mapfullview'
 
 export default class App extends React.Component {
   render() {
@@ -22,6 +23,8 @@ export default class App extends React.Component {
       <Scene hideNavBar={true} key="TruckList" component={TruckList} title="Truck List" />
 
       <Scene hideNavBar={true} key="TruckProfile" component={TruckProfile} title="Truck Profile" />
+      
+      <Scene hideNavBar={true} key="MapFullView" component={MapFullView} title="Map Full View" />
 
       </Scene>
     </Router>
