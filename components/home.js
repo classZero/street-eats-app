@@ -13,6 +13,7 @@ import {
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
 import Map from './map'
+import MapFullView from './mapfullview'
 
 
 const styles = StyleSheet.create({
@@ -65,7 +66,26 @@ const styles = StyleSheet.create({
     },
     trucklist: {
         position: 'absolute',
-        marginTop: 325
+        marginTop: 360,
+    },
+    trucklisty: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: 15,
+        marginBottom: 25,
+    },
+    activetruckheader: {
+        marginTop: 325,
+        position: 'absolute',
+    },
+    activetrucktext: {
+        textAlign: 'center',
+        marginLeft: 150,
+        fontWeight: 'bold',
+        textShadowColor: 'grey',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 4,
+        color: 'white',
     }
 })
 
@@ -101,17 +121,20 @@ class Home extends Component {
                     <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
                     <Text style={styles.hometext} >Street Eats</Text>
                     <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
-                    <Text onPress={() => Actions.Map()} style={styles.homeFullMap}>Full Map</Text>
+                    <Text onPress={() => Actions.MapFullView()} style={styles.homeFullMap}>Full Map</Text>
                 </View>
             <View style={styles.mapcontainer}>
                    <Map />
             </View>
+            <View style={styles.activetruckheader}>
+                <Text style={styles.activetrucktext}>Active Trucks</Text>
+            </View>
             <View style={styles.trucklist}>
-                <FlatList
+                <FlatList 
                    data={this.state.data}
                    keyExtractor={(x, i) => 'truck' + i}
                    renderItem={({ item}) => 
-                    <Text>{item.companyname}</Text>}
+                    <Text style={styles.trucklisty}>{item.companyname}</Text>}
                     />
             </View>
             </View>
