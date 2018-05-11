@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         justifyContent: 'space-evenly',
         backgroundColor: 'rgb(176, 199, 201)',
-        height: 60,
+        height: 55,
+        marginLeft: -25,
     },
     hometext: {
         color: 'white',
@@ -29,7 +30,21 @@ const styles = StyleSheet.create({
         textShadowColor: 'grey',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 4,
-    }
+    },
+    flatlistcontainer: {
+       flexDirection: "row",
+    },
+    truckname: {
+        fontSize: 20,
+        fontWeight: "bold",
+        marginTop: 15,
+        marginLeft: 10,
+        marginRight: 10,
+        marginBottom: 15,
+    },
+    flaty: {
+        marginBottom: 50,
+    },
 })
 
 
@@ -59,19 +74,22 @@ class TruckList extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                    <TouchableHighlight onPress={() => Actions.pop()}>
+                        <Image  source={require('../assets/backbttn.png')} style={{width: 23, height: 23, marginLeft: -8, marginTop: 14}}/>
+                    </TouchableHighlight>
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     <Text onPress={() => Actions.home()} style={styles.hometext} >All Trucks</Text>
-                    <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                 </View>
                 <View>
-                   <FlatList
+                   <FlatList style={styles.flaty}
                    data={this.state.data}
                    keyExtractor={(x, i) => 'truck' + i}
                    renderItem={({ item}) => 
-                   <View>
-                    <Text onPress={() => Actions.TruckProfile({username: item.username})} >{item.companyname}</Text>
-                    <Image source={{uri:`${item.companylogo}`}}
-                style={{width: 50, height: 50}} />
+                   <View style={styles.flatlistcontainer}>
+                   <Image source={{uri:`${item.companylogo}`}}
+                style={{width: 50, height: 50, borderRadius: 25, marginBottom: 15, marginTop: 5, marginLeft: 10}} />
+                    <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.truckname} >{item.companyname}</Text>
                     </View>}
                     />
                 </View>

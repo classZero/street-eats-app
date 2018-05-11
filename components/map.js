@@ -1,6 +1,7 @@
 import MapView, {Marker} from 'react-native-maps';
 import React, { Component } from 'react';
 import {Actions} from 'react-native-router-flux';
+import Geocoder from 'react-native-geocoding';
 import {
   AppRegistry,
   StyleSheet,
@@ -35,8 +36,14 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
+Geocoder.init('AIzaSyDykDxWlL6Mrcj0cdQFKad3HotDSm-FV3E');
+Geocoder.from("12278 kings eagle street")
+        .then(json => {
+            var location = json.results[0].geometry.location;
+            console.log(location);
+        })
+        .catch(error => console.warn(error));
+        
 class Map extends Component {
   state = {
     region: {
@@ -97,10 +104,10 @@ componentDidMount() {
         return ( <Marker key={"truck" + i}
         coordinate={{latitude: truck.lat , longitude: truck.lng}}
         title={truck.companyname}
-        description={truck.aboutus}
+        // onPress={() => Actions.TruckProfile({username: truck.username})}
         >
-        <Image source={require('../assets/truck_pin.png')}
-           style={{width: 50, height: 50}} />
+        <Image source={require('../assets/goodtruck.png')}
+           style={{width: 75, height: 50}} />
         </Marker>
         )
       })}
