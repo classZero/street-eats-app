@@ -82,15 +82,6 @@ componentDidMount() {
           console.error(error);
         });
 }
-
-// setPins = (function() {
-//   return (
-//     console.log(this.state.data)
-//   )
-// })
-// <Image source={require('../assets/truck_pin.png')}
-//           style={{width: 50, height: 50}} />
-
   render() {
     return (
       <MapView style={ styles.map } showsUserLocation = {true}
@@ -105,7 +96,6 @@ componentDidMount() {
         coordinate={{latitude: truck.lat , longitude: truck.lng}}
         title={truck.companyname}
         OnLongPress={(e) => console.log(e)}
-        // onPress={() => Actions.TruckProfile({username: truck.username})}
         >
         <Image source={require('../assets/goodtruck.png')}
            style={{width: 75, height: 50}} />
