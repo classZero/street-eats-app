@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 15,
         marginBottom: 25,
+        marginTop: 10,
     },
     activetruckheader: {
         marginTop: 325,
@@ -94,6 +95,12 @@ const styles = StyleSheet.create({
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 4,
         color: 'white',
+    },
+    flatlistcontainer: {
+        flexDirection: 'row',
+    },
+    flatlists: {
+        marginBottom: 50,
     }
 })
 
@@ -123,7 +130,9 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
+            
             <StatusBar hidden={true} />
+                
                 <View style={styles.header}>
                     <Text onPress={() => Actions.TruckList()} style={styles.homeTruckList}>All Trucks</Text>
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
@@ -131,26 +140,33 @@ class Home extends Component {
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     <Text onPress={() => Actions.Login()} style={styles.homeFullMap}>Truck Login</Text>
                 </View>
+
             <View style={styles.mapcontainer}>
                 <Map />
             </View>
+
             <View>
             <TouchableHighlight onPress={() => Actions.MapFullView()}>
-            <ImageBackground source={require('../assets/expand.png')} style={{position: 'absolute', marginTop: 190, width: 20, height: 20, marginLeft: 350}}>Enlarge Map</ImageBackground>
+            <ImageBackground source={require('../assets/expand.png')} style={{position: 'absolute', marginTop: 180, width: 30, height: 30, marginLeft: 340}}>Enlarge Map</ImageBackground>
             </TouchableHighlight>
             </View>
+
             <View style={styles.activetruckheader}>
                 <Text style={styles.activetrucktext}>Active Trucks</Text>
             </View>
+
             <View style={styles.trucklist}>
-                <FlatList 
+                <FlatList style={styles.flatlists}
                 data={this.state.data}
                 keyExtractor={(x, i) => 'truck' + i}
-                renderItem={({ item}) => 
-                    <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>}
-                    // <Image source={{uri:`${item.companylogo}`}}/>}
+                renderItem={({ item}) =>
+                <View style={styles.flatlistcontainer}> 
+                    <Image source={{uri:`${item.companylogo}`}} style={{width: 50, height: 50, borderRadius: 25, marginBottom: 15, marginTop: 0, marginLeft: 10}} />
+                    <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>
+                    </View>}
                     />
             </View>
+            
             </View>
             
         );
