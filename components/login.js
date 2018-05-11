@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Actions} from 'react-native-router-flux';
 import {
     StyleSheet,
     Text,
@@ -9,7 +10,7 @@ import {
     StatusBar,
     Keyboard,
     AsyncStorage,
-  } from 'react-native';
+    } from 'react-native';
 
 
 class Login extends Component {
@@ -34,6 +35,7 @@ class Login extends Component {
         .then((resp) => {
             console.log(resp.token)
             AsyncStorage.setItem('token', resp.token)
+            AsyncStorage.setItem('username', resp.user)
         })
         .catch((error) => {console.error(error);
         });
@@ -45,10 +47,9 @@ class Login extends Component {
         Keyboard.dismiss()
     }
 
-    showToken = () => {
-        AsyncStorage.getItem('token').then(token => {
-            console.log(token)
-            const d = "sadsad"
+    removeToken = () => {
+        AsyncStorage.removeItem('token').then(token => {
+            console.log("Token removed")
         })
     }
 
@@ -74,8 +75,12 @@ class Login extends Component {
                 onPress={this.handleSubmit}
                 />
                 <Button
-                title="Show token"
-                onPress={this.showToken}
+                title="Logout"
+                onPress={this.removeToken}
+                />
+                <Button
+                title="Update page"
+                onPress={() => Actions.TruckUpdate()}
                 />
             </View>
         );

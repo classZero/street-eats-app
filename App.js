@@ -9,6 +9,7 @@ import TruckList from './components/truckList'
 import TruckProfile from './components/truckProfile'
 import MapFullView from './components/mapfullview'
 import Login from './components/login'
+import TruckUpdate from './components/truckUpdate'
 
 export default class App extends React.Component {
   render() {
@@ -28,6 +29,8 @@ export default class App extends React.Component {
       <Scene hideNavBar={true} key="MapFullView" component={MapFullView} title="Map Full View" />
 
       <Scene hideNavBar={true} key="Login" component={Login} title="Login" />
+
+      <Scene hideNavBar={true} key="TruckUpdate" component={TruckUpdate} title="Truck Update" />
 
       </Scene>
     </Router>
