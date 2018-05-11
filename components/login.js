@@ -48,6 +48,7 @@ class Login extends Component {
     showToken = () => {
         AsyncStorage.getItem('token').then(token => {
             console.log(token)
+            const d = "sadsad"
         })
     }
 

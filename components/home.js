@@ -9,7 +9,7 @@ import {
     Button,
     TouchableHighlight,
     StatusBar,
-  } from 'react-native';
+    } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
 import Map from './map'
@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
         left: 0,
     },
     header: {
-       flexDirection: 'row', 
-       justifyContent: 'space-evenly',
-       backgroundColor: 'rgb(176, 199, 201)',
-       height: 100,
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly',
+        backgroundColor: 'rgb(176, 199, 201)',
+        height: 100,
     },
     homeFullMap: {
         color: 'grey',
@@ -98,15 +98,15 @@ class Home extends Component {
     componentDidMount() {
         return fetch('http://192.168.2.97:3001/api/truckdata/active', {
             method: 'GET'
-          }).then((response) => response.json())
-              .then((resp) => {
-                 this.setState({
-                     data: resp.results
-                 })
-              })
-              .catch((error) => {
+        }).then((response) => response.json())
+        .then((resp) => {
+                this.setState({
+                    data: resp.results
+                })
+            })
+            .catch((error) => {
                 console.error(error);
-              });
+            });
     }
     
 
@@ -123,16 +123,16 @@ class Home extends Component {
                     <Text onPress={() => Actions.MapFullView()} style={styles.homeFullMap}>Full Map</Text>
                 </View>
             <View style={styles.mapcontainer}>
-                   <Map />
+                <Map />
             </View>
             <View style={styles.activetruckheader}>
                 <Text style={styles.activetrucktext}>Active Trucks</Text>
             </View>
             <View style={styles.trucklist}>
                 <FlatList 
-                   data={this.state.data}
-                   keyExtractor={(x, i) => 'truck' + i}
-                   renderItem={({ item}) => 
+                data={this.state.data}
+                keyExtractor={(x, i) => 'truck' + i}
+                renderItem={({ item}) => 
                     <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>}
                     />
 
