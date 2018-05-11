@@ -10,7 +10,7 @@ import {
     StatusBar,
     Keyboard,
     AsyncStorage,
-  } from 'react-native';
+    } from 'react-native';
 
 
 class Login extends Component {
@@ -47,12 +47,6 @@ class Login extends Component {
         Keyboard.dismiss()
     }
 
-    showToken = () => {
-        AsyncStorage.getItem('token').then(token => {
-            console.log(token)
-        })
-    }
-
     removeToken = () => {
         AsyncStorage.removeItem('token').then(token => {
             console.log("Token removed")
@@ -79,10 +73,6 @@ class Login extends Component {
                 <Button
                 title="Submit"
                 onPress={this.handleSubmit}
-                />
-                <Button
-                title="Show token"
-                onPress={this.showToken}
                 />
                 <Button
                 title="Logout"

@@ -99,31 +99,28 @@ class TruckUpdate extends Component {
         })
         .catch((error) => {console.error(error);
         });
-
-
-
-
-
-
         })
     }
 
     checkout = () => {
-        console.log("checkout")
-    }
-
-    showToken = () => {
         AsyncStorage.getItem('token').then(token => {
-            console.log(token)
+            const headers = {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }
+            fetch('http://10.68.0.164:3001/api/removelocale', {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({
+                username: this.state.username,
+            }),
+        }).then((response) => response.json())
+        .then((resp) => {
+            console.log(resp)
         })
-        AsyncStorage.getItem('username').then(username => {
-            console.log(username)
-        })
-    }
-
-    removeToken = () => {
-        AsyncStorage.removeItem('token').then(token => {
-            console.log("Token removed")
+        .catch((error) => {console.error(error);
+        });
         })
     }
 
@@ -133,7 +130,6 @@ class TruckUpdate extends Component {
                 <View style={styles.mapcontainer}>
                     <Map />
                 </View>
-                <Text>Update My Location</Text>
                 <View style={styles.buttoncontainer}>
                     <Button
                     style={styles.button}
@@ -142,16 +138,8 @@ class TruckUpdate extends Component {
                     />
                     <Button
                     style={styles.button}
-                    title="Checkout out of My Current Location"
+                    title="Checkout of My Current Location"
                     onPress={this.checkout}
-                    />
-                    <Button
-                    title="Show token"
-                    onPress={this.showToken}
-                    />
-                    <Button
-                    title="Logout"
-                    onPress={this.removeToken}
                     />
                 </View>
             </View>
