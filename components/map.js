@@ -95,6 +95,7 @@ componentDidMount() {
         return ( <Marker key={"truck" + i}
         coordinate={{latitude: truck.lat , longitude: truck.lng}}
         title={truck.companyname}
+        OnLongPress={(e) => console.log(e)}
         >
         <Image source={require('../assets/goodtruck.png')}
            style={{width: 75, height: 50}} />
