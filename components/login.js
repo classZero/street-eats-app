@@ -8,6 +8,7 @@ import {
     Button,
     StatusBar,
     Keyboard,
+    AsyncStorage,
   } from 'react-native';
 
 
@@ -31,7 +32,9 @@ class Login extends Component {
             }),
         }).then((response) => response.json())
         .then((resp) => {
-            console.log(resp)})
+            console.log(resp.token)
+            AsyncStorage.setItem('token', resp.token)
+        })
         .catch((error) => {console.error(error);
         });
 
@@ -40,6 +43,12 @@ class Login extends Component {
             password: ''
         })
         Keyboard.dismiss()
+    }
+
+    showToken = () => {
+        AsyncStorage.getItem('token').then(token => {
+            console.log(token)
+        })
     }
 
     render() {
@@ -62,6 +71,10 @@ class Login extends Component {
                 <Button
                 title="Submit"
                 onPress={this.handleSubmit}
+                />
+                <Button
+                title="Show token"
+                onPress={this.showToken}
                 />
             </View>
         );
