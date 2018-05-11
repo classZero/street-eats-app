@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
        justifyContent: 'space-evenly',
        backgroundColor: 'rgb(176, 199, 201)',
        height: 100,
+       marginLeft: -25,
     },
     homeFullMap: {
         color: 'grey',
@@ -105,9 +106,12 @@ class MapFullView extends Component {
             <View style={styles.container}>
                 <StatusBar hidden={true} />
                     <View style={styles.header}>
-                        <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                    <TouchableHighlight onPress={() => Actions.pop()}>
+                    <Image  source={require('../assets/backbttn.png')} style={{width: 23, height: 23, marginLeft: -8, marginTop: 14}}/>
+                    </TouchableHighlight>
+                        <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                         <Text onPress={() => Actions.home()} style={styles.hometext} >Street Eats</Text>
-                        <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                        <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     </View>
 
                     <View style={styles.mapcontainer}>

@@ -9,6 +9,7 @@ import {
     Button,
     TouchableHighlight,
     StatusBar,
+    ImageBackground,
     } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
@@ -122,14 +123,19 @@ class Home extends Component {
             <View style={styles.container}>
             <StatusBar hidden={true} />
                 <View style={styles.header}>
-                    <Text onPress={() => Actions.TruckList()} style={styles.homeTruckList}>Truck List</Text>
-                    <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                    <Text onPress={() => Actions.TruckList()} style={styles.homeTruckList}>All Trucks</Text>
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     <Text style={styles.hometext} >Street Eats</Text>
-                    <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     <Text onPress={() => Actions.MapFullView()} style={styles.homeFullMap}>Full Map</Text>
                 </View>
             <View style={styles.mapcontainer}>
                 <Map />
+            </View>
+            <View>
+            <TouchableHighlight onPress={() => Actions.MapFullView()}>
+            <ImageBackground source={require('../assets/expand.png')} style={{position: 'absolute', marginTop: 190, width: 20, height: 20, marginLeft: 350}}>Enlarge Map</ImageBackground>
+            </TouchableHighlight>
             </View>
             <View style={styles.activetruckheader}>
                 <Text style={styles.activetrucktext}>Active Trucks</Text>
