@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 40,
         fontWeight: 'bold',
+        marginRight: 20,
+        marginLeft: 20,
+        color: 'white',
+        textShadowColor: 'grey',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 4,
     },
     createdBy: {
         textAlign: 'center',
