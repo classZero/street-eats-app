@@ -127,7 +127,7 @@ class Home extends Component {
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     <Text style={styles.hometext} >Street Eats</Text>
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
-                    <Text onPress={() => Actions.MapFullView()} style={styles.homeFullMap}>Full Map</Text>
+                    <Text onPress={() => Actions.Login()} style={styles.homeFullMap}>Truck Login</Text>
                 </View>
             <View style={styles.mapcontainer}>
                 <Map />
@@ -146,9 +146,8 @@ class Home extends Component {
                 keyExtractor={(x, i) => 'truck' + i}
                 renderItem={({ item}) => 
                     <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>}
+                    // <Image source={{uri:`${item.companylogo}`}}/>}
                     />
-
-                    <Text onPress={() => Actions.Login()} >Go To Login Page</Text>
             </View>
             </View>
             
