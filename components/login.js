@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Actions} from 'react-native-router-flux';
 import {
     StyleSheet,
     Text,
@@ -34,6 +35,7 @@ class Login extends Component {
         .then((resp) => {
             console.log(resp.token)
             AsyncStorage.setItem('token', resp.token)
+            AsyncStorage.setItem('username', resp.user)
         })
         .catch((error) => {console.error(error);
         });
@@ -48,7 +50,12 @@ class Login extends Component {
     showToken = () => {
         AsyncStorage.getItem('token').then(token => {
             console.log(token)
-            const d = "sadsad"
+        })
+    }
+
+    removeToken = () => {
+        AsyncStorage.removeItem('token').then(token => {
+            console.log("Token removed")
         })
     }
 
@@ -76,6 +83,14 @@ class Login extends Component {
                 <Button
                 title="Show token"
                 onPress={this.showToken}
+                />
+                <Button
+                title="Logout"
+                onPress={this.removeToken}
+                />
+                <Button
+                title="Update page"
+                onPress={() => Actions.TruckUpdate()}
                 />
             </View>
         );
