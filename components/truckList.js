@@ -6,19 +6,29 @@ import { FlatList } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#0080ff',
+        backgroundColor: '#9ad3de',
         position: 'absolute',
         top: 0,
         bottom: 0,
         right: 0,
         left: 0,
     },
+    header: {
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly',
+        backgroundColor: 'rgb(176, 199, 201)',
+        height: 60,
+    },
     hometext: {
-        color: 'black',
-        marginTop: 20,
+        color: 'white',
+        marginTop: 15,
         flexDirection: 'row',
         textAlign: 'center',
         fontSize: 20,
+        fontWeight: 'bold',
+        textShadowColor: 'grey',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 4,
     }
 })
 
@@ -48,7 +58,11 @@ class TruckList extends Component {
         console.log(this.state.data.username)
         return (
             <View style={styles.container}>
-                <Text onPress={() => Actions.pop()} style={styles.hometext} >Street Eats</Text>
+                <View style={styles.header}>
+                    <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                    <Text onPress={() => Actions.home()} style={styles.hometext} >All Trucks</Text>
+                    <Image source={require('../assets/truck_pin.png')} style={{width: 40, height: 40, marginTop: 8}} />
+                </View>
                 <View>
                    <FlatList
                    data={this.state.data}

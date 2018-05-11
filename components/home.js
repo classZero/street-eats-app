@@ -32,18 +32,24 @@ const styles = StyleSheet.create({
         height: 100,
     },
     homeFullMap: {
-        color: 'grey',
+        color: '#d6edf1',
         marginTop: 15,
         flexDirection: 'row',
         textAlign: 'center',
-        fontSize: 13
+        fontSize: 15,
+        textShadowColor: '#9ad3de',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 1,
     },
     homeTruckList: {
-        color: 'grey',
+        color: '#d6edf1',
         marginTop: 15,
         flexDirection: 'row',
         textAlign: 'center',
-        fontSize: 13
+        fontSize: 15,
+        textShadowColor: '#9ad3de',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 1,
     },
     hometext: {
         color: 'white',
