@@ -63,14 +63,13 @@ componentDidMount() {
     (error) => alert(JSON.stringify(error)),
     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
   );
-  return fetch('http://10.68.0.164:3001/api/truckdata/active', {
+  return fetch('http://192.168.2.97:3001/api/truckdata/active', {
       method: 'GET'
     }).then((response) => response.json())
         .then((resp) => {
           this.setState({
             data: resp.results
         })
-          console.log(resp.results)
         })
         .catch((error) => {
           console.error(error);
@@ -94,8 +93,7 @@ componentDidMount() {
            onRegionChange={this.onRegionChange}
       >
       <StatusBar hidden={true} />      
-      {this.state.data.map((truck, i) => {
-        console.log(truck)  
+      {this.state.data.map((truck, i) => { 
         return ( <Marker key={"truck" + i}
         coordinate={{latitude: truck.lat , longitude: truck.lng}}
         title={truck.companyname}

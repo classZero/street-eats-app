@@ -29,7 +29,7 @@ class TruckList extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.68.0.164:3001/api/truckdata/all', {
+        return fetch('http://192.168.2.97:3001/api/truckdata/all', {
             method: 'GET'
           }).then((response) => response.json())
               .then((resp) => {
@@ -56,7 +56,7 @@ class TruckList extends Component {
                    renderItem={({ item}) => 
                    <View>
                     <Text onPress={() => Actions.TruckProfile({username: item.username})} >{item.companyname}</Text>
-                    <Image source={{uri: `${item.companylogo}`}}
+                    <Image source={{uri:`${item.companylogo}`}}
                 style={{width: 50, height: 50}} />
                     </View>}
                     />
