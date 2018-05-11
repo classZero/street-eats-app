@@ -96,7 +96,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://192.168.2.97:3001/api/truckdata/active', {
+        return fetch('http://10.68.0.164:3001/api/truckdata/active', {
             method: 'GET'
         }).then((response) => response.json())
         .then((resp) => {
