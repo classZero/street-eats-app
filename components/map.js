@@ -70,7 +70,6 @@ componentDidMount() {
           this.setState({
             data: resp.results
         })
-          console.log(resp.results)
         })
         .catch((error) => {
           console.error(error);
@@ -94,8 +93,7 @@ componentDidMount() {
            onRegionChange={this.onRegionChange}
       >
       <StatusBar hidden={true} />      
-      {this.state.data.map((truck, i) => {
-        console.log(truck)  
+      {this.state.data.map((truck, i) => { 
         return ( <Marker key={"truck" + i}
         coordinate={{latitude: truck.lat , longitude: truck.lng}}
         title={truck.companyname}

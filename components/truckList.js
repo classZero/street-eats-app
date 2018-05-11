@@ -70,7 +70,7 @@ class TruckList extends Component {
                    renderItem={({ item}) => 
                    <View>
                     <Text onPress={() => Actions.TruckProfile({username: item.username})} >{item.companyname}</Text>
-                    <Image source={{uri: `${item.companylogo}`}}
+                    <Image source={{uri:`${item.companylogo}`}}
                 style={{width: 50, height: 50}} />
                     </View>}
                     />
