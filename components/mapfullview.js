@@ -9,6 +9,7 @@ import {
     Button,
     TouchableHighlight,
     StatusBar,
+    ImageBackground,
   } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import { FlatList } from 'react-native-gesture-handler';
@@ -114,8 +115,18 @@ class MapFullView extends Component {
                         <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     </View>
 
+                    
+                        
+                    
+
                     <View style={styles.mapcontainer}>
                         <Map />
+                    </View>
+
+                    <View>
+                        <TouchableHighlight onPress={() => Actions.pop()}>
+                        <ImageBackground source={require('../assets/minimize.png')} style={{position: 'absolute', marginTop: 510, width: 40, height: 40, marginLeft: 325}}>Minimize Map</ImageBackground>
+                        </TouchableHighlight>
                     </View>
             </View>
             
