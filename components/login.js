@@ -10,10 +10,39 @@ import {
     StatusBar,
     Keyboard,
     AsyncStorage,
+    TouchableHighlight
     } from 'react-native';
 
 import TruckUpdate from './truckUpdate'
 
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#9ad3de',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0,
+    },
+    header: {
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly',
+        backgroundColor: 'rgb(176, 199, 201)',
+        height: 55,
+        marginLeft: -45,
+    },
+    hometext: {
+        color: 'white',
+        marginTop: 15,
+        flexDirection: 'row',
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        textShadowColor: 'grey',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 4,
+    },
+})
 
 class Login extends Component {
     state = {
@@ -56,10 +85,19 @@ class Login extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
+
+                <View style={styles.header}>
+                    <TouchableHighlight onPress={() => Actions.pop()}>
+                        <Image  source={require('../assets/backbttn.png')} style={{width: 23, height: 23, marginLeft: -8, marginTop: 14}}/>
+                    </TouchableHighlight>
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
+                    <Text onPress={() => Actions.home()} style={styles.hometext} >Login</Text>
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
+                </View>
+
                 <View>
                 <StatusBar hidden={true} />
-                <Text>Login</Text>
                 <Text>Username:</Text>
                 <TextInput
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
@@ -67,7 +105,7 @@ class Login extends Component {
                 value={this.state.name}
                 />
                 <Text>Password:</Text>
-                <TextInput
+                <TextInput secureTextEntry={true}
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
@@ -75,6 +113,7 @@ class Login extends Component {
                 <Button
                 title="Submit"
                 onPress={this.handleSubmit}
+                color="white"
                 />
                 <Button
                 title="Home"
