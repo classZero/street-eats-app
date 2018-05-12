@@ -101,7 +101,18 @@ const styles = StyleSheet.create({
     },
     flatlists: {
         marginBottom: 50,
-    }
+    },
+    homeTruckListHidden: {
+        color: '#d6edf1',
+        marginTop: 15,
+        flexDirection: 'row',
+        textAlign: 'center',
+        fontSize: 15,
+        textShadowColor: '#9ad3de',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 1,
+        height: 0
+    },
 })
 
 
@@ -111,7 +122,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.68.0.123:3001/api/truckdata/active', {
+        return fetch('http://192.168.2.97:3001/api/truckdata/active', {
             method: 'GET'
         }).then((response) => response.json())
         .then((resp) => {
@@ -122,23 +133,44 @@ class Home extends Component {
             .catch((error) => {
                 console.error(error);
             });
+
             
     }
     
 
 
+    loggedIn() {
+        if(this.props.loggedIn === true) {
+          return <Text onPress={() => Actions.TruckUpdate({loggedIn: this.props.loggedIn})} style={styles.homeFullMap}>My Profile</Text>
+        } else {
+          return <Text onPress={() => Actions.Login()} style={styles.homeFullMap}>Truck Login</Text>
+        }
+      } 
+
+      showAllList() {
+        if(this.props.loggedIn === true) {
+            return <Text onPress={() => Actions.TruckList()} style={styles.homeTruckListHidden}>All Trucks</Text>
+          } else {
+            return <Text onPress={() => Actions.TruckList()} style={styles.homeTruckList}>All Trucks</Text>
+          }
+      }
+
+
+
     render() {
+        console.log(this.props.loggedIn)
         return (
             <View style={styles.container}>
             
             <StatusBar hidden={true} />
                 
                 <View style={styles.header}>
-                    <Text onPress={() => Actions.TruckList()} style={styles.homeTruckList}>All Trucks</Text>
+                    {/* <Text onPress={() => Actions.TruckList()} style={styles.homeTruckList}>All Trucks</Text> */}
+                    {this.showAllList()}
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                     <Text style={styles.hometext} >Street Eats</Text>
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
-                    <Text onPress={() => Actions.Login()} style={styles.homeFullMap}>Truck Login</Text>
+                    {this.loggedIn()}
                 </View>
 
             <View style={styles.mapcontainer}>
@@ -152,7 +184,7 @@ class Home extends Component {
             </View>
 
             <View style={styles.activetruckheader}>
-                <Text style={styles.activetrucktext}>Active Trucks</Text>
+                <Text style={styles.activetrucktext}>Trucks a Cookin'</Text>
             </View>
 
             <View style={styles.trucklist}>
