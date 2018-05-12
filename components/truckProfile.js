@@ -36,7 +36,7 @@ class TruckProfile extends Component {
         data: {}
     }
     componentDidMount() {
-        return fetch('http://10.68.0.164:3001/api/truckprofile/' + this.props.username, {
+        return fetch('http://192.168.2.97:3001/api/truckprofile/' + this.props.username, {
             method: 'GET'
           }).then((response) => response.json())
               .then((resp) => {

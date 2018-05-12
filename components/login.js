@@ -23,7 +23,7 @@ class Login extends Component {
 
     handleSubmit = () => {
         
-        fetch('http://10.68.0.164:3001/api/login', {
+        fetch('http://192.168.2.97:3001/api/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -39,7 +39,7 @@ class Login extends Component {
                 AsyncStorage.setItem('token', resp.token)
                 AsyncStorage.setItem('username', resp.user)
                 AsyncStorage.setItem('isAuth', 'true')
-                Actions.TruckUpdate()
+                Actions.TruckUpdate({loggedIn: true})
             } else {
                 alert("Bad username and/or password")
             }
@@ -75,6 +75,10 @@ class Login extends Component {
                 <Button
                 title="Submit"
                 onPress={this.handleSubmit}
+                />
+                <Button
+                title="Home"
+                onPress={() => Actions.pop()}
                 />
                 </View>
             </View>

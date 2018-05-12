@@ -85,7 +85,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.164:3001/api/uplocale', {
+            fetch('http://192.168.2.97:3001/api/uplocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -109,7 +109,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.164:3001/api/removelocale', {
+            fetch('http://192.168.2.97:3001/api/removelocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -128,10 +128,11 @@ class TruckUpdate extends Component {
         AsyncStorage.removeItem('token').then(token => {
           console.log(token)
         })
-        Actions.home()
+        Actions.home({loggedIn: false})
     }
 
     render() {
+        console.log(this.props.loggedIn)
         return (
             <View style={styles.container}>
                 <View style={styles.mapcontainer}>
@@ -140,18 +141,22 @@ class TruckUpdate extends Component {
                 <View style={styles.buttoncontainer}>
                     <Button
                     style={styles.button}
-                    title="Check into My Current Location"
+                    title="Open up Shop"
                     onPress={this.checkin}
                     />
                     <Button
                     style={styles.button}
-                    title="Checkout of My Current Location"
+                    title="Close up Shop"
                     onPress={this.checkout}
                     />
                     <Button
-                title="Logout"
-                onPress={this.removeToken}
-                />
+                    title="Logout"
+                    onPress={this.removeToken}
+                    />
+                    <Button
+                    title="Home"
+                    onPress={() => Actions.home({loggedIn: this.props.loggedIn})}
+                    />
                 </View>
             </View>
             
