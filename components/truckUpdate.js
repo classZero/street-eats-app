@@ -85,7 +85,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.164:3001/api/uplocale', {
+            fetch('http://10.68.0.123:3001/api/uplocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -109,7 +109,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.164:3001/api/removelocale', {
+            fetch('http://10.68.0.123:3001/api/removelocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
