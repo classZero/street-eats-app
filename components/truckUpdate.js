@@ -137,6 +137,7 @@ class TruckUpdate extends Component {
         }).then((response) => response.json())
         .then((resp) => {
             console.log(resp)
+            alert("You have closed your truck!")
         })
         .catch((error) => {console.error(error);
         });
