@@ -10,7 +10,8 @@ import {
     StatusBar,
     Keyboard,
     AsyncStorage,
-    TouchableHighlight
+    TouchableHighlight,
+    Vibration
     } from 'react-native';
 
 import TruckUpdate from './truckUpdate'
@@ -44,11 +45,15 @@ const styles = StyleSheet.create({
     },
     username: {
         fontWeight: 'bold',
+        marginTop: 25,
     },
     password: {
         fontWeight: 'bold',
+        marginTop: 25,
     },
 })
+
+const DURATION = 10000 ;
 
 class Login extends Component {
     state = {
@@ -58,7 +63,7 @@ class Login extends Component {
 
     handleSubmit = () => {
         
-        fetch('http://192.168.0.27:3001/api/login', {
+        fetch('http://10.68.0.123:3001/api/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -77,6 +82,7 @@ class Login extends Component {
                 Actions.TruckUpdate({loggedIn: true})
             } else {
                 alert("Bad username and/or password")
+                Vibration.vibrate(DURATION)
             }
         })
         .catch((error) => {console.error(error);
@@ -106,24 +112,19 @@ class Login extends Component {
                 <StatusBar hidden={true} />
                 <Text style={styles.username}>Username:</Text>
                 <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300, marginLeft: 30, marginTop: 10, color: 'white'}}
                 onChangeText={(name) => this.setState({name})}
                 value={this.state.name}
                 />
                 <Text style={styles.password}>Password:</Text>
                 <TextInput secureTextEntry={true}
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300, marginLeft: 30, marginTop: 10, marginBottom: 25, color: 'white'}}
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
                 />
                 <Button
                 title="Submit"
                 onPress={this.handleSubmit}
-                color="white"
-                />
-                <Button
-                title="Home"
-                onPress={() => Actions.pop()}
                 color="white"
                 />
                 </View>

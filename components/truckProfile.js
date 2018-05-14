@@ -31,12 +31,13 @@ const styles = StyleSheet.create({
         textShadowRadius: 4,
     },
     })
+    
 class TruckProfile extends Component {
     state = {
         data: {}
     }
     componentDidMount() {
-        return fetch('http://192.168.0.27:3001/api/truckprofile/' + this.props.username, {
+        return fetch('http://10.68.0.123:3001/api/truckprofile/' + this.props.username, {
             method: 'GET'
           }).then((response) => response.json())
               .then((resp) => {
@@ -63,6 +64,10 @@ class TruckProfile extends Component {
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
             </View>
             <ScrollView>
+                <View style={{flexDirection: "row"}}>
+                    <Text style={{fontSize:15, fontWeight: "bold", marginLeft: 175}} >4/5</Text>
+                    <Image source={require('../assets/starreview.png')} style={{width: 20, height: 20}}/>
+                </View>
                 <Image source={{uri: `${this.state.data.logo}`}}
                 style={{width: 200, height: 200, borderRadius: 25, marginLeft: 90, marginTop: 15, marginBottom: 15}} />
                 <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 20, color: 'white', textShadowColor: 'grey',
