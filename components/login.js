@@ -42,6 +42,12 @@ const styles = StyleSheet.create({
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 4,
     },
+    username: {
+        fontWeight: 'bold',
+    },
+    password: {
+        fontWeight: 'bold',
+    },
 })
 
 class Login extends Component {
@@ -52,7 +58,7 @@ class Login extends Component {
 
     handleSubmit = () => {
         
-        fetch('http://192.168.2.97:3001/api/login', {
+        fetch('http://192.168.0.27:3001/api/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -98,13 +104,13 @@ class Login extends Component {
 
                 <View>
                 <StatusBar hidden={true} />
-                <Text>Username:</Text>
+                <Text style={styles.username}>Username:</Text>
                 <TextInput
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                 onChangeText={(name) => this.setState({name})}
                 value={this.state.name}
                 />
-                <Text>Password:</Text>
+                <Text style={styles.password}>Password:</Text>
                 <TextInput secureTextEntry={true}
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                 onChangeText={(password) => this.setState({password})}
@@ -118,6 +124,7 @@ class Login extends Component {
                 <Button
                 title="Home"
                 onPress={() => Actions.pop()}
+                color="white"
                 />
                 </View>
             </View>

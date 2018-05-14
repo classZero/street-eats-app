@@ -35,14 +35,6 @@ const styles = StyleSheet.create({
     height: 5,
   },
 });
-
-Geocoder.init('AIzaSyDykDxWlL6Mrcj0cdQFKad3HotDSm-FV3E');
-Geocoder.from("12278 kings eagle street")
-        .then(json => {
-            var location = json.results[0].geometry.location;
-            console.log(location);
-        })
-        .catch(error => console.warn(error));
         
 class Map extends Component {
   state = {
@@ -70,7 +62,7 @@ componentDidMount() {
     (error) => alert(JSON.stringify(error)),
     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
   );
-  return fetch('http://192.168.2.97:3001/api/truckdata/active', {
+  return fetch('http://192.168.0.27:3001/api/truckdata/active', {
       method: 'GET'
     }).then((response) => response.json())
         .then((resp) => {
