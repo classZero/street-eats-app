@@ -196,8 +196,6 @@ class Home extends Component {
                 <View style={styles.flatlistcontainer}> 
                     <Image source={{uri:`${item.companylogo}`}} style={{width: 50, height: 50, borderRadius: 25, marginBottom: 15, marginTop: 0, marginLeft: 10}} />
                     <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>
-                    <Text style={styles.manystars}>4/5</Text>
-                    <Image source={require('../assets/starreview.png')} style={{width: 20, height: 20, marginTop: 10}}/>
                     </View>}
                     />
             </View>
