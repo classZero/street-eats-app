@@ -84,12 +84,10 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     activetruckheader: {
-        marginTop: 325,
-        position: 'absolute',
+        marginTop: 225,
     },
     activetrucktext: {
         textAlign: 'center',
-        marginLeft: 150,
         fontWeight: 'bold',
         textShadowColor: 'grey',
         textShadowOffset: {width: -1, height: 1},
@@ -122,7 +120,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://192.168.2.97:3001/api/truckdata/active', {
+        return fetch('http://192.168.0.27:3001/api/truckdata/active', {
             method: 'GET'
         }).then((response) => response.json())
         .then((resp) => {
