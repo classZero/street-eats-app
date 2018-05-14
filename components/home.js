@@ -120,7 +120,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://192.168.0.27:3001/api/truckdata/active', {
+        return fetch('http://10.68.0.123:3001/api/truckdata/active', {
             method: 'GET'
         }).then((response) => response.json())
         .then((resp) => {
@@ -193,6 +193,8 @@ class Home extends Component {
                 <View style={styles.flatlistcontainer}> 
                     <Image source={{uri:`${item.companylogo}`}} style={{width: 50, height: 50, borderRadius: 25, marginBottom: 15, marginTop: 0, marginLeft: 10}} />
                     <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>
+                    <Text>4/5</Text>
+                    <Image source={require('../assets/starreview.png')} style={{width: 5, height: 5}}/>
                     </View>}
                     />
             </View>

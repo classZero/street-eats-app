@@ -44,7 +44,25 @@ const styles = StyleSheet.create ({
     width: 200,
     height: 200,
     flex: 1,
-    }
+    },
+    header: {
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly',
+        backgroundColor: 'rgb(176, 199, 201)',
+        height: 55,
+        marginLeft: -45,
+    },
+    hometext: {
+        color: 'white',
+        marginTop: 15,
+        flexDirection: 'row',
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        textShadowColor: 'grey',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 4,
+    },
 })
 
 
@@ -85,7 +103,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://192.168.0.27:3001/api/uplocale', {
+            fetch('http://10.68.0.123:3001/api/uplocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -96,6 +114,7 @@ class TruckUpdate extends Component {
         }).then((response) => response.json())
         .then((resp) => {
             console.log(resp)
+            alert("You have updated your location!")
         })
         .catch((error) => {console.error(error);
         });
@@ -109,7 +128,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://192.168.0.27:3001/api/removelocale', {
+            fetch('http://10.68.0.123:3001/api/removelocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -135,6 +154,16 @@ class TruckUpdate extends Component {
         console.log(this.props.loggedIn)
         return (
             <View style={styles.container}>
+
+                <View style={styles.header}>
+                    <TouchableHighlight onPress={() => Actions.pop()}>
+                        <Image  source={require('../assets/backbttn.png')} style={{width: 23, height: 23, marginLeft: -8, marginTop: 14}}/>
+                    </TouchableHighlight>
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
+                    <Text onPress={() => Actions.home()} style={styles.hometext} >Profile</Text>
+                    <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
+                </View>
+
                 <View style={styles.mapcontainer}>
                     <Map />
                 </View>
@@ -143,19 +172,23 @@ class TruckUpdate extends Component {
                     style={styles.button}
                     title="Open up Shop"
                     onPress={this.checkin}
+                    color="white"
                     />
                     <Button
                     style={styles.button}
                     title="Close up Shop"
                     onPress={this.checkout}
+                    color="white"
                     />
                     <Button
                     title="Logout"
                     onPress={this.removeToken}
+                    color="white"
                     />
                     <Button
                     title="Home"
                     onPress={() => Actions.home({loggedIn: this.props.loggedIn})}
+                    color="white"
                     />
                 </View>
             </View>
