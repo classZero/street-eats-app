@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 4,
         color: 'white',
-        flex: 1,
     },
     flatlistcontainer: {
         flexDirection: 'row',
