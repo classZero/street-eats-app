@@ -74,6 +74,7 @@ componentDidMount() {
           console.error(error);
         });
 }
+
   render() {
     return (
       <MapView style={ styles.map } showsUserLocation = {true}

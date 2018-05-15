@@ -114,13 +114,13 @@ class Login extends Component {
                 <StatusBar hidden={true} />
                 <Text style={styles.username}>Username:</Text>
                 <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300, marginLeft: 30, marginTop: 10, color: 'white'}}
+                style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300, marginLeft: 30, marginTop: 10, paddingLeft: 10}}
                 onChangeText={(name) => this.setState({name})}
                 value={this.state.name}
                 />
                 <Text style={styles.password}>Password:</Text>
                 <TextInput secureTextEntry={true}
-                style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300, marginLeft: 30, marginTop: 10, marginBottom: 25, color: 'white'}}
+                style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300, marginLeft: 30, marginTop: 10, marginBottom: 25, paddingLeft: 10}}
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
                 />

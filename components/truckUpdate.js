@@ -154,6 +154,7 @@ class TruckUpdate extends Component {
         Actions.home({loggedIn: false})
     }
 
+
     render() {
         console.log(this.props.loggedIn)
         return (
