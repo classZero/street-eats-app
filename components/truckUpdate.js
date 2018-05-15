@@ -11,6 +11,7 @@ import {
     TouchableHighlight,
     StatusBar,
     AsyncStorage,
+    Vibration,
 } from 'react-native';
 import Map from './map'
 
@@ -103,7 +104,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.123:3001/api/uplocale', {
+            fetch('http://10.68.0.164:3001/api/uplocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -114,6 +115,7 @@ class TruckUpdate extends Component {
         }).then((response) => response.json())
         .then((resp) => {
             console.log(resp)
+            Vibration.vibrate()
             alert("You have updated your location!")
         })
         .catch((error) => {console.error(error);
@@ -128,7 +130,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.123:3001/api/removelocale', {
+            fetch('http://10.68.0.164:3001/api/removelocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -137,6 +139,7 @@ class TruckUpdate extends Component {
         }).then((response) => response.json())
         .then((resp) => {
             console.log(resp)
+            Vibration.vibrate()
             alert("You have closed your truck!")
         })
         .catch((error) => {console.error(error);
@@ -150,6 +153,7 @@ class TruckUpdate extends Component {
         })
         Actions.home({loggedIn: false})
     }
+
 
     render() {
         console.log(this.props.loggedIn)
