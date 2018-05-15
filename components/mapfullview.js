@@ -125,7 +125,7 @@ class MapFullView extends Component {
 
                     <View>
                         <TouchableHighlight onPress={() => Actions.pop()}>
-                        <ImageBackground source={require('../assets/minimize.png')} style={{position: 'absolute', marginTop: 510, width: 40, height: 40, marginLeft: 325}}>Minimize Map</ImageBackground>
+                        <ImageBackground source={require('../assets/minimize.png')} style={{position: 'absolute', marginTop: 510, width: 40, height: 40, marginLeft: 325, flex: 1}}>Minimize Map</ImageBackground>
                         </TouchableHighlight>
                     </View>
             </View>
