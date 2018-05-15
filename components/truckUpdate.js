@@ -23,7 +23,6 @@ const styles = StyleSheet.create ({
         bottom: 0,
         right: 0,
         left: 0,
-        flex: 1,
     },
     mapcontainer: {
         marginTop: 55,
@@ -32,7 +31,6 @@ const styles = StyleSheet.create ({
         left: 0,
         right: 0,
         bottom: 350,
-        flex: 1,
     },
     buttoncontainer: {
         marginTop: 15,
@@ -41,7 +39,6 @@ const styles = StyleSheet.create ({
         top: 400,
         width: 400,
         display: 'flex',
-        flex: 1,
     },
     button: {
     width: 200,
@@ -54,7 +51,6 @@ const styles = StyleSheet.create ({
         backgroundColor: 'rgb(176, 199, 201)',
         height: 55,
         marginLeft: -45,
-        flex: 1,
     },
     hometext: {
         color: 'white',
@@ -66,7 +62,6 @@ const styles = StyleSheet.create ({
         textShadowColor: 'grey',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 4,
-        flex: 1,
     },
 })
 
