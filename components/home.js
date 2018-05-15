@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         right: 0,
         left: 0,
+        flex: 1,
     },
     header: {
         flexDirection: 'row', 
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
         textShadowColor: '#9ad3de',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 1,
+        flex: 1,
     },
     homeTruckList: {
         color: '#d6edf1',
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
         textShadowColor: '#9ad3de',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 1,
+        flex: 1,
     },
     hometext: {
         color: 'white',
@@ -72,6 +75,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 350,
+        flex: 1,
     },
     trucklisty: {
         fontSize: 20,
@@ -90,6 +94,7 @@ const styles = StyleSheet.create({
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 4,
         color: 'white',
+        flex: 1,
     },
     flatlistcontainer: {
         flexDirection: 'row',
@@ -179,7 +184,7 @@ class Home extends Component {
 
             <View>
             <TouchableHighlight onPress={() => Actions.MapFullView()}>
-            <ImageBackground source={require('../assets/expand.png')} style={{position: 'absolute', marginTop: 180, width: 30, height: 30, marginLeft: 340}}>Enlarge Map</ImageBackground>
+            <ImageBackground source={require('../assets/expand.png')} style={{position: 'absolute', marginTop: 180, width: 30, height: 30, marginLeft: 340, flex: 1}}>Enlarge Map</ImageBackground>
             </TouchableHighlight>
             </View>
 

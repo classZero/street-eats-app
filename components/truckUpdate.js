@@ -160,11 +160,11 @@ class TruckUpdate extends Component {
             <View style={styles.container}>
 
                 <View style={styles.header}>
-                    <TouchableHighlight onPress={() => Actions.pop()}>
+                    <TouchableHighlight onPress={() => Actions.home({loggedIn: this.props.loggedIn})}>
                         <Image  source={require('../assets/backbttn.png')} style={{width: 23, height: 23, marginLeft: -8, marginTop: 14}}/>
                     </TouchableHighlight>
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
-                    <Text onPress={() => Actions.home()} style={styles.hometext} >Profile</Text>
+                    <Text onPress={() => Actions.home({loggedIn: this.props.loggedIn})} style={styles.hometext} >Profile</Text>
                     <Image source={require('../assets/goodtruck.png')} style={{width: 45, height: 35, marginTop: 8}} />
                 </View>
 
