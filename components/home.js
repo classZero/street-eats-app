@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         bottom: 0,
         right: 0,
         left: 0,
-        flex: 1,
     },
     header: {
         flexDirection: 'row', 
@@ -44,7 +43,6 @@ const styles = StyleSheet.create({
         textShadowColor: '#9ad3de',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 1,
-        flex: 1,
     },
     homeTruckList: {
         color: '#d6edf1',
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
         textShadowColor: '#9ad3de',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 1,
-        flex: 1,
     },
     hometext: {
         color: 'white',
@@ -75,7 +72,6 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 350,
-        flex: 1,
     },
     trucklisty: {
         fontSize: 20,
@@ -182,7 +178,7 @@ class Home extends Component {
             </View>
 
             <View>
-            <TouchableHighlight onPress={() => Actions.MapFullView()}>
+            <TouchableHighlight onPress={() => Actions.MapFullView({loggedIn: this.props.loggedIn})}>
             <ImageBackground source={require('../assets/expand.png')} style={{position: 'absolute', marginTop: 180, width: 30, height: 30, marginLeft: 340, flex: 1}}>Enlarge Map</ImageBackground>
             </TouchableHighlight>
             </View>
@@ -199,7 +195,7 @@ class Home extends Component {
                 renderItem={({ item}) =>
                 <View style={styles.flatlistcontainer}> 
                     <Image source={{uri:`${item.companylogo}`}} style={{width: 50, height: 50, borderRadius: 25, marginBottom: 15, marginTop: 0, marginLeft: 10}} />
-                    <Text onPress={() => Actions.TruckProfile({username: item.username})} style={styles.trucklisty} >{item.companyname}</Text>
+                    <Text onPress={() => Actions.TruckProfile({username: item.username, loggedIn: this.props.loggedIn})} style={styles.trucklisty} >{item.companyname}</Text>
                 </View>}
                     />
             </View>
