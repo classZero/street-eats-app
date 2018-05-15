@@ -54,7 +54,7 @@ class TruckList extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.68.0.123:3001/api/truckdata/all', {
+        return fetch('http://10.68.0.164:3001/api/truckdata/all', {
             method: 'GET'
           }).then((response) => response.json())
               .then((resp) => {
