@@ -37,7 +37,7 @@ class TruckProfile extends Component {
         data: {}
     }
     componentDidMount() {
-        return fetch('http://10.68.0.164:3001/api/truckprofile/' + this.props.username, {
+        return fetch('http://10.68.0.166:3001/api/truckprofile/' + this.props.username, {
             method: 'GET'
           }).then((response) => response.json())
               .then((resp) => {
@@ -65,7 +65,7 @@ class TruckProfile extends Component {
             </View>
             <ScrollView>
                 <Image source={{uri: `${this.state.data.logo}`}}
-                style={{width: 200, height: 200, borderRadius: 25, marginLeft: 90, marginTop: 15, marginBottom: 15}} />
+                style={{width: 340, resizeMode: 'center', height: 200, borderRadius: 25, marginTop: 15, marginBottom: 15, marginLeft: 15}} />
                 <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 20, color: 'white', textShadowColor: 'grey',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 4,}}>About Us</Text>

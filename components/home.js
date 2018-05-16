@@ -122,7 +122,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.68.0.164:3001/api/truckdata/active', {
+        return fetch('http://10.68.0.166:3001/api/truckdata/active', {
             method: 'GET'
         }).then((response) => response.json())
         .then((resp) => {
@@ -143,7 +143,7 @@ class Home extends Component {
         if(this.props.loggedIn === true) {
           return <Text onPress={() => Actions.TruckUpdate({loggedIn: this.props.loggedIn})} style={styles.homeFullMap}>My Profile</Text>
         } else {
-          return <Text onPress={() => Actions.Login()} style={styles.homeFullMap}>Truck Login</Text>
+          return <Text onPress={() => Actions.Login()} style={styles.homeFullMap}>Login</Text>
         }
       } 
 

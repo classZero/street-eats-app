@@ -104,7 +104,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.164:3001/api/uplocale', {
+            fetch('http://10.68.0.166:3001/api/uplocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -116,7 +116,7 @@ class TruckUpdate extends Component {
         .then((resp) => {
             console.log(resp)
             Vibration.vibrate()
-            alert("You have updated your location!")
+            alert("Time to Get Cookin!")
         })
         .catch((error) => {console.error(error);
         });
@@ -130,7 +130,7 @@ class TruckUpdate extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             }
-            fetch('http://10.68.0.164:3001/api/removelocale', {
+            fetch('http://10.68.0.166:3001/api/removelocale', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({
@@ -140,7 +140,7 @@ class TruckUpdate extends Component {
         .then((resp) => {
             console.log(resp)
             Vibration.vibrate()
-            alert("You have closed your truck!")
+            alert("Time to Relax! You Deserve It!")
         })
         .catch((error) => {console.error(error);
         });
